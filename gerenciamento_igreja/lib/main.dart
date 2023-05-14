@@ -35,15 +35,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Gerenciamento Igreja',
       theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xff2d5986),
         ),
         scaffoldBackgroundColor: const Color(0xff2d5986),
-
       ),
-      home: const TelaResponsivel(),
-      // home: TelaLogin(),
+      //home: const TelaResponsivel(),
+      home: TelaLogin(),
     );
   }
 }
