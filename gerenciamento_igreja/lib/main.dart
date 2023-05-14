@@ -4,6 +4,8 @@ import 'package:gerenciamento_igreja/tela_resposivel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
+import 'app/paginas/tela_login.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await InicializaParse();
@@ -32,17 +34,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gerenciamento Igreja',
-      theme: ThemeData(
-       // textTheme: TextTheme(displayMedium: TextStyle(color: Colors.red)),
+      theme: ThemeData.dark().copyWith(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: const AppBarTheme(
-          color: Colors.indigo,
-          elevation: 2,
-          titleTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 26,
-          ),
+          backgroundColor: Color(0xff2d5986),
         ),
+        scaffoldBackgroundColor: const Color(0xff2d5986),
+
       ),
       home: const TelaResponsivel(),
       // home: TelaLogin(),

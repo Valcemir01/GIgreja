@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../stores/page_store.dart';
+import 'expansiotilecuston.dart';
+import 'listtilecuston.dart';
 
 class Menu extends StatelessWidget {
   final bool isMobile;
@@ -17,7 +19,7 @@ class Menu extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            color: Colors.indigo,
+            color: const Color(0xff204060),
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -42,7 +44,6 @@ class Menu extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
                           ),
                         ),
                         Text(
@@ -50,7 +51,6 @@ class Menu extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -62,35 +62,33 @@ class Menu extends StatelessWidget {
           ),
           Flexible(
             child: Container(
-              color: Colors.indigo.shade300,
+              color: const Color(0xff204060),
               child: ListView(
                 children: [
-                  ExpansionTile(
-                    title: const Text('Cadastro'),
-                    leading: const Icon(Icons.add_card),
-                    children: [
-                      ListTile(
-                        title: const Text(
-                          'Funcionario',
-                        ),
+                  const Divider(
+                    thickness: 2,
+                    color: Colors.white,
+                  ),
+                  ExpansioTileCuston(
+                    titulo: Text('Cadastro'),
+                    icon: Icon(Icons.add_card),
+                    chidren: [
+                      ListTileCuston(
+                        titulo: 'Funcionario',
                         onTap: () {
                           isMobile ? Navigator.of(context).pop() : null;
                           pageStore.setPage(0);
                         },
                       ),
-                      ListTile(
-                        title: const Text(
-                          'Cliente',
-                        ),
+                      ListTileCuston(
+                        titulo: 'Cliente',
                         onTap: () {
                           isMobile ? Navigator.of(context).pop() : null;
                           pageStore.setPage(1);
                         },
                       ),
-                      ListTile(
-                        title: const Text(
-                          'Fornecedor',
-                        ),
+                      ListTileCuston(
+                        titulo: 'Fornecedor',
                         onTap: () {
                           isMobile ? Navigator.of(context).pop() : null;
                           pageStore.setPage(2);
@@ -102,14 +100,12 @@ class Menu extends StatelessWidget {
                     thickness: 2,
                     color: Colors.white,
                   ),
-                  ExpansionTile(
-                    title: const Text('Venda',),
-                    leading: const Icon(Icons.add_chart_outlined,),
-                    children: [
-                      ListTile(
-                        title: const Text(
-                          'Produtos',
-                        ),
+                  ExpansioTileCuston(
+                    titulo: Text('Venda'),
+                    icon: Icon(Icons.add_chart_outlined),
+                    chidren: [
+                      ListTileCuston(
+                        titulo: 'Produto',
                         onTap: () {},
                       ),
                     ],
