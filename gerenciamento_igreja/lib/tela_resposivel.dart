@@ -20,16 +20,24 @@ class _TelaResponsivelState extends State<TelaResponsivel> {
           title: const Text('A.S.I'),
         ),
         body: isMobile
-            ? TelaBase()
-            : Row(
-                children: [
-                  Menu(
-                    isMobile: isMobile,
-                  ),
-                  Expanded(
-                    child: TelaBase(),
-                  ),
-                ],
+            ? SizedBox(
+                child: TelaBase(),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+              )
+            : SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Row(
+                  children: [
+                    Menu(
+                      isMobile: isMobile,
+                    ),
+                    Expanded(
+                      child: TelaBase(),
+                    ),
+                  ],
+                ),
               ),
       );
     });

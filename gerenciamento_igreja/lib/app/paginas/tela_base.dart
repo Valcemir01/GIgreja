@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_igreja/app/paginas/tela_cad_usuario.dart';
 import 'package:gerenciamento_igreja/app/stores/page_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
@@ -35,6 +36,7 @@ class _TelaBaseState extends State<TelaBase> {
           Container(child: const Text('Funcionario'),),
           Container(child: const Text('Cliente'),),
           Container(child: const Text('Fornecedor'),),
+          const TelaCadUsuario(),
         ],
       ),
     );

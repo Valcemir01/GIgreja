@@ -35,13 +35,20 @@ class _TextFieldCustonState extends State<TextFieldCuston> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
-      child: TextFormField(
+      child: TextField(
         inputFormatters: widget.inputFormattes,
         obscureText: isObscureText,
         keyboardType: widget.keyboardTypes,
+        style: const TextStyle(color: Color(0xff2d5986),),
         decoration: InputDecoration(
-          label: Text(widget.label,),
-          prefixIcon: Icon(widget.icon,),
+          label: Text(
+            widget.label,
+            style: const TextStyle(color: Color(0xff2d5986)),
+          ),
+          prefixIcon: Icon(
+            widget.icon,
+            color: const Color(0xff2d5986),
+          ),
           suffixIcon: widget.isSecret
               ? IconButton(
                   onPressed: () {
@@ -52,12 +59,21 @@ class _TextFieldCustonState extends State<TextFieldCuston> {
                     );
                   },
                   icon: Icon(
-                      isObscureText ? Icons.visibility : Icons.visibility_off,),
+                    isObscureText ? Icons.visibility : Icons.visibility_off, color: const Color(0xff2d5986),
+                  ),
                 )
               : null,
           isDense: true,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.orange,
+            ),
+          ),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff2d5986),
+              width: 2,
+            ),
           ),
         ),
       ),

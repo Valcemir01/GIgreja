@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../componentes/tesxfieldcuston.dart';
+import '../componentes/text_field_custon.dart';
 
 class TelaLogin extends StatefulWidget {
   @override
@@ -18,7 +18,6 @@ class _TelaLoginState extends State<TelaLogin> {
         child: SizedBox(
           width: 500,
           child: Card(
-            color: Colors.grey[500],
             margin: const EdgeInsets.symmetric(horizontal: 16),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -53,7 +52,7 @@ class _TelaLoginState extends State<TelaLogin> {
                         onPressed: () {
                           // lógica de validação de login
                         },
-                        child: Text('Salvar'),
+                        child: const Text('LOGAR', style: TextStyle(fontSize: 26),),
                       ),
                     ),
                   ),

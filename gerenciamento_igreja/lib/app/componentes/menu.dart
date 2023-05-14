@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../stores/page_store.dart';
-import 'expansiotilecuston.dart';
-import 'listtilecuston.dart';
+import 'expansio_tile_custon.dart';
+import 'list_tile_custon.dart';
 
 class Menu extends StatelessWidget {
   final bool isMobile;
@@ -92,6 +92,13 @@ class Menu extends StatelessWidget {
                         onTap: () {
                           isMobile ? Navigator.of(context).pop() : null;
                           pageStore.setPage(2);
+                        },
+                      ),
+                      ListTileCuston(
+                        titulo: 'Usuario',
+                        onTap: () {
+                          isMobile ? Navigator.of(context).pop() : null;
+                          pageStore.setPage(3);
                         },
                       ),
                     ],
