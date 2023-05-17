@@ -33,12 +33,12 @@ class _TelaLoginState extends State<TelaLogin> {
                     ),
                   ),
                   const SizedBox(height: 16,),
-                  const TextFieldCuston(
+                  TextFieldCuston(
                     icon: Icons.person,
                     label: 'Email',
                     keyboardTypes: TextInputType.emailAddress,
                   ),
-                  const TextFieldCuston(
+                  TextFieldCuston(
                     icon: Icons.lock,
                     label: 'Senha',
                     isSecret: true,

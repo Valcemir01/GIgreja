@@ -1,12 +1,15 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciamento_igreja/app/componentes/titulo_form.dart';
 
 import '../componentes/text_field_custon.dart';
+import '../stores/cad_usuario_store.dart';
 
 class TelaCadUsuario extends StatelessWidget {
-  const TelaCadUsuario({Key? key}) : super(key: key);
+  TelaCadUsuario({Key? key}) : super(key: key);
+  CadUserStore cadUserStore = CadUserStore();
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +29,16 @@ class TelaCadUsuario extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 3,
-                    child: TextFieldCuston(
-                      icon: Icons.person,
-                      label: 'Membro',
-                    ),
+                    child: Observer(builder: (_){
+                      return TextFieldCuston(
+                        icon: Icons.person,
+                        label: 'Membro',
+                        onChangeds: cadUserStore.setName,
+                        erro: cadUserStore.nomeErro,
+                      );
+                    },)
                   ),
                   const SizedBox(
                     width: 12,
@@ -50,7 +57,7 @@ class TelaCadUsuario extends StatelessWidget {
                 ],
               ),
               Row(
-                children: const [
+                children:[
                   Expanded(
                     flex: 3,
                     child: TextFieldCuston(
@@ -58,7 +65,7 @@ class TelaCadUsuario extends StatelessWidget {
                       label: 'E-Mail',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Expanded(
@@ -70,7 +77,7 @@ class TelaCadUsuario extends StatelessWidget {
                 ],
               ),
               Row(
-                children: const [
+                children:[
                   Expanded(
                     child: TextFieldCuston(
                       icon: Icons.lock,
@@ -78,7 +85,7 @@ class TelaCadUsuario extends StatelessWidget {
                       isSecret: true,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Expanded(

@@ -36,7 +36,7 @@ class _TelaBaseState extends State<TelaBase> {
           Container(child: const Text('Funcionario'),),
           Container(child: const Text('Cliente'),),
           Container(child: const Text('Fornecedor'),),
-          const TelaCadUsuario(),
+          TelaCadUsuario(),
         ],
       ),
     );
