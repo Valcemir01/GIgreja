@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciamento_igreja/app/componentes/titulo_form.dart';
+import 'package:mobx/mobx.dart';
 
 import '../componentes/text_field_custon.dart';
-import '../stores/cad_usuario_store.dart';
+import '../stores/cad_user_store.dart';
 
 class TelaCadUsuario extends StatelessWidget {
   TelaCadUsuario({Key? key}) : super(key: key);
@@ -29,31 +30,38 @@ class TelaCadUsuario extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Expanded(
-                    flex: 3,
-                    child: Observer(builder: (_){
-                      return TextFieldCuston(
-                        icon: Icons.person,
-                        label: 'Membro',
-                        onChangeds: cadUserStore.setName,
-                        erro: cadUserStore.nomeErro,
-                      );
-                    },)
+                  Observer(builder:
+                  (_){
+                    return   Expanded(
+                        flex: 3,
+                        child: TextFieldCuston(
+                          icon: Icons.person,
+                          label: 'Membro',
+                          onChangeds:  cadUserStore.setNome,
+                          erro: cadUserStore.erroNome,
+                        )
+                    );
+                  }
                   ),
                   const SizedBox(
                     width: 12,
                   ),
-                  Expanded(
-                    child: TextFieldCuston(
-                      icon: Icons.phone,
-                      label: 'Telefone',
-                      inputFormattes: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        TelefoneInputFormatter(),
-                      ],
-                      keyboardTypes: TextInputType.number,
-                    ),
-                  ),
+                  Observer(builder:(_){
+                    return
+                      Expanded(
+                        child: TextFieldCuston(
+                          icon: Icons.phone,
+                          label: 'Telefone',
+                          onChangeds: cadUserStore.setTelefone,
+                          erro: cadUserStore.erroTelefone,
+                          inputFormattes: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            TelefoneInputFormatter(),
+                          ],
+                          keyboardTypes: TextInputType.number,
+                        ),
+                      );
+                  }),
                 ],
               ),
               Row(
@@ -68,23 +76,31 @@ class TelaCadUsuario extends StatelessWidget {
                   const SizedBox(
                     width: 12,
                   ),
-                  Expanded(
-                    child: TextFieldCuston(
-                      icon: Icons.person,
-                      label: 'Apelido',
-                    ),
-                  ),
+                  Observer(builder: (_){
+                    return  Expanded(
+                      child: TextFieldCuston(
+                        icon: Icons.person,
+                        label: 'Nome de Usuario',
+                        onChangeds: cadUserStore.setUsuario,
+                        erro: cadUserStore.erroUsuario,
+                      ),
+                    );
+                  }),
                 ],
               ),
               Row(
                 children:[
-                  Expanded(
-                    child: TextFieldCuston(
-                      icon: Icons.lock,
-                      label: 'Senha',
-                      isSecret: true,
-                    ),
-                  ),
+                  Observer(builder: (_){
+                    return Expanded(
+                      child: TextFieldCuston(
+                        icon: Icons.lock,
+                        label: 'Senha',
+                        isSecret: true,
+                        onChangeds: cadUserStore.setSenha,
+                        erro: cadUserStore.erroSenha,
+                      ),
+                    );
+                  }),
                   const SizedBox(
                     width: 12,
                   ),
