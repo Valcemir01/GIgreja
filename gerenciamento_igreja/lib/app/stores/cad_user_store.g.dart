@@ -9,34 +9,55 @@ part of 'cad_user_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CadUserStore on _CadUserStore, Store {
-  Computed<String?>? _$erroNomeComputed;
+  Computed<bool>? _$nomeValidComputed;
 
   @override
-  String? get erroNome =>
-      (_$erroNomeComputed ??= Computed<String?>(() => super.erroNome,
-              name: '_CadUserStore.erroNome'))
+  bool get nomeValid =>
+      (_$nomeValidComputed ??= Computed<bool>(() => super.nomeValid,
+              name: '_CadUserStore.nomeValid'))
           .value;
-  Computed<String?>? _$erroTelefoneComputed;
+  Computed<bool>? _$telefoneValidComputed;
 
   @override
-  String? get erroTelefone =>
-      (_$erroTelefoneComputed ??= Computed<String?>(() => super.erroTelefone,
-              name: '_CadUserStore.erroTelefone'))
+  bool get telefoneValid =>
+      (_$telefoneValidComputed ??= Computed<bool>(() => super.telefoneValid,
+              name: '_CadUserStore.telefoneValid'))
           .value;
-  Computed<String?>? _$erroUsuarioComputed;
+  Computed<bool>? _$senhaValidComputed;
 
   @override
-  String? get erroUsuario =>
-      (_$erroUsuarioComputed ??= Computed<String?>(() => super.erroUsuario,
-              name: '_CadUserStore.erroUsuario'))
+  bool get senhaValid =>
+      (_$senhaValidComputed ??= Computed<bool>(() => super.senhaValid,
+              name: '_CadUserStore.senhaValid'))
           .value;
-  Computed<String?>? _$erroSenhaComputed;
+  Computed<bool>? _$senha2ValidComputed;
 
   @override
-  String? get erroSenha =>
-      (_$erroSenhaComputed ??= Computed<String?>(() => super.erroSenha,
-              name: '_CadUserStore.erroSenha'))
+  bool get senha2Valid =>
+      (_$senha2ValidComputed ??= Computed<bool>(() => super.senha2Valid,
+              name: '_CadUserStore.senha2Valid'))
           .value;
+  Computed<bool>? _$emailValidComputed;
+
+  @override
+  bool get emailValid =>
+      (_$emailValidComputed ??= Computed<bool>(() => super.emailValid,
+              name: '_CadUserStore.emailValid'))
+          .value;
+  Computed<bool>? _$isFormValidComputed;
+
+  @override
+  bool get isFormValid =>
+      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
+              name: '_CadUserStore.isFormValid'))
+          .value;
+  Computed<Function?>? _$verificaSalvaComputed;
+
+  @override
+  Function? get verificaSalva => (_$verificaSalvaComputed ??=
+          Computed<Function?>(() => super.verificaSalva,
+              name: '_CadUserStore.verificaSalva'))
+      .value;
 
   late final _$nomeAtom = Atom(name: '_CadUserStore.nome', context: context);
 
@@ -69,22 +90,6 @@ mixin _$CadUserStore on _CadUserStore, Store {
     });
   }
 
-  late final _$usuarioAtom =
-      Atom(name: '_CadUserStore.usuario', context: context);
-
-  @override
-  String? get usuario {
-    _$usuarioAtom.reportRead();
-    return super.usuario;
-  }
-
-  @override
-  set usuario(String? value) {
-    _$usuarioAtom.reportWrite(value, super.usuario, () {
-      super.usuario = value;
-    });
-  }
-
   late final _$senhaAtom = Atom(name: '_CadUserStore.senha', context: context);
 
   @override
@@ -98,6 +103,61 @@ mixin _$CadUserStore on _CadUserStore, Store {
     _$senhaAtom.reportWrite(value, super.senha, () {
       super.senha = value;
     });
+  }
+
+  late final _$senha2Atom =
+      Atom(name: '_CadUserStore.senha2', context: context);
+
+  @override
+  String? get senha2 {
+    _$senha2Atom.reportRead();
+    return super.senha2;
+  }
+
+  @override
+  set senha2(String? value) {
+    _$senha2Atom.reportWrite(value, super.senha2, () {
+      super.senha2 = value;
+    });
+  }
+
+  late final _$emailAtom = Atom(name: '_CadUserStore.email', context: context);
+
+  @override
+  String? get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String? value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  late final _$loadingAtom =
+      Atom(name: '_CadUserStore.loading', context: context);
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  late final _$_SalvarAsyncAction =
+      AsyncAction('_CadUserStore._Salvar', context: context);
+
+  @override
+  Future<void> _Salvar() {
+    return _$_SalvarAsyncAction.run(() => super._Salvar());
   }
 
   late final _$_CadUserStoreActionController =
@@ -126,17 +186,6 @@ mixin _$CadUserStore on _CadUserStore, Store {
   }
 
   @override
-  void setUsuario(String? valor) {
-    final _$actionInfo = _$_CadUserStoreActionController.startAction(
-        name: '_CadUserStore.setUsuario');
-    try {
-      return super.setUsuario(valor);
-    } finally {
-      _$_CadUserStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setSenha(String? valor) {
     final _$actionInfo = _$_CadUserStoreActionController.startAction(
         name: '_CadUserStore.setSenha');
@@ -148,16 +197,43 @@ mixin _$CadUserStore on _CadUserStore, Store {
   }
 
   @override
+  void setSenha2(String? valor) {
+    final _$actionInfo = _$_CadUserStoreActionController.startAction(
+        name: '_CadUserStore.setSenha2');
+    try {
+      return super.setSenha2(valor);
+    } finally {
+      _$_CadUserStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEmail(String? valor) {
+    final _$actionInfo = _$_CadUserStoreActionController.startAction(
+        name: '_CadUserStore.setEmail');
+    try {
+      return super.setEmail(valor);
+    } finally {
+      _$_CadUserStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 nome: ${nome},
 telefone: ${telefone},
-usuario: ${usuario},
 senha: ${senha},
-erroNome: ${erroNome},
-erroTelefone: ${erroTelefone},
-erroUsuario: ${erroUsuario},
-erroSenha: ${erroSenha}
+senha2: ${senha2},
+email: ${email},
+loading: ${loading},
+nomeValid: ${nomeValid},
+telefoneValid: ${telefoneValid},
+senhaValid: ${senhaValid},
+senha2Valid: ${senha2Valid},
+emailValid: ${emailValid},
+isFormValid: ${isFormValid},
+verificaSalva: ${verificaSalva}
     ''';
   }
 }

@@ -6,6 +6,7 @@ class TextFieldCuston extends StatefulWidget {
   final String label;
   final bool isSecret;
   final String? erro;
+  final bool? enabled;
   final List<TextInputFormatter>? inputFormattes;
   final TextInputType? keyboardTypes;
   final Function(String)? onChangeds;
@@ -14,6 +15,7 @@ class TextFieldCuston extends StatefulWidget {
     Key? key,
     required this.icon,
     required this.label,
+    this.enabled,
     this.erro,
     this.onChangeds,
     this.keyboardTypes,
@@ -44,6 +46,7 @@ class _TextFieldCustonState extends State<TextFieldCuston> {
         obscureText: isObscureText,
         keyboardType: widget.keyboardTypes,
         onChanged: widget.onChangeds,
+        enabled: widget.enabled,
         style: const TextStyle(color: Color(0xff2d5986),),
         decoration: InputDecoration(
           errorText: widget.erro,

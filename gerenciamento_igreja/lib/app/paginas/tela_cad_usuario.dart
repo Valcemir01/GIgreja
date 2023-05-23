@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciamento_igreja/app/componentes/titulo_form.dart';
-import 'package:mobx/mobx.dart';
 
 import '../componentes/text_field_custon.dart';
 import '../stores/cad_user_store.dart';
@@ -39,6 +38,7 @@ class TelaCadUsuario extends StatelessWidget {
                           label: 'Membro',
                           onChangeds:  cadUserStore.setNome,
                           erro: cadUserStore.erroNome,
+                          enabled: cadUserStore.loading,
                         )
                     );
                   }
@@ -54,6 +54,7 @@ class TelaCadUsuario extends StatelessWidget {
                           label: 'Telefone',
                           onChangeds: cadUserStore.setTelefone,
                           erro: cadUserStore.erroTelefone,
+                          enabled: cadUserStore.loading,
                           inputFormattes: [
                             FilteringTextInputFormatter.digitsOnly,
                             TelefoneInputFormatter(),
@@ -66,26 +67,21 @@ class TelaCadUsuario extends StatelessWidget {
               ),
               Row(
                 children:[
-                  Expanded(
-                    flex: 3,
-                    child: TextFieldCuston(
-                      icon: Icons.email,
-                      label: 'E-Mail',
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
                   Observer(builder: (_){
-                    return  Expanded(
+                    return Expanded(
+                      flex: 3,
                       child: TextFieldCuston(
-                        icon: Icons.person,
-                        label: 'Nome de Usuario',
-                        onChangeds: cadUserStore.setUsuario,
-                        erro: cadUserStore.erroUsuario,
+                        icon: Icons.email,
+                        label: 'E-Mail',
+                        onChangeds: cadUserStore.setEmail,
+                        erro: cadUserStore.erroEmail,
+                        enabled: cadUserStore.loading,
                       ),
                     );
                   }),
+                  const SizedBox(
+                    width: 12,
+                  ),
                 ],
               ),
               Row(
@@ -98,49 +94,62 @@ class TelaCadUsuario extends StatelessWidget {
                         isSecret: true,
                         onChangeds: cadUserStore.setSenha,
                         erro: cadUserStore.erroSenha,
+                        enabled: cadUserStore.loading,
                       ),
                     );
                   }),
                   const SizedBox(
                     width: 12,
                   ),
-                  Expanded(
-                    child: TextFieldCuston(
-                      icon: Icons.lock,
-                      label: 'Confimação Senha',
-                      isSecret: true,
-                    ),
-                  ),
+                  Observer(builder: (_){
+                    return Expanded(
+                      child: TextFieldCuston(
+                        icon: Icons.lock,
+                        label: 'Confimação Senha',
+                        isSecret: true,
+                        onChangeds: cadUserStore.setSenha2,
+                        erro: cadUserStore.erroSenha2,
+                        enabled: cadUserStore.loading,
+                      ),
+                    );
+                  }),
                 ],
               ),
-              SizedBox(
-                width: 300,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.save,
+              Observer(builder: (_){
+                return SizedBox(
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed:  cadUserStore.verificaSalva != null ? () => cadUserStore.verificaSalva!() : null,
+                          icon: const Icon(
+                            Icons.save,
+                          ),
+                          label: cadUserStore.loading
+                            ? const Text('Salvar')
+                              : const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(),),
                         ),
-                        label: const Text('Salvar'),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.clear,
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: cadUserStore.isFormValid ? (){} : null,
+                          icon: const Icon(
+                            Icons.clear,
+                          ),
+                          label: const Text('Limpar'),
                         ),
-                        label: const Text('Limpar'),
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                    ],
+                  ),
+                );
+              }),
             ],
           ),
         ),
