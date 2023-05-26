@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciamento_igreja/app/componentes/titulo_form.dart';
 
-import '../componentes/text_field_custon.dart';
-import '../stores/cad_user_store.dart';
+import '../../componentes/text_field_custon.dart';
+import '../../stores/cad_user_store.dart';
 
-class TelaCadUsuario extends StatelessWidget {
-  TelaCadUsuario({Key? key}) : super(key: key);
+class UserDesc extends StatelessWidget {
+  UserDesc({Key? key}) : super(key: key);
   CadUserStore cadUserStore = CadUserStore();
 
   @override
@@ -29,64 +29,53 @@ class TelaCadUsuario extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Observer(builder:
-                  (_){
-                    return   Expanded(
+                  Observer(builder: (_) {
+                    return Expanded(
                         flex: 3,
                         child: TextFieldCuston(
                           icon: Icons.person,
                           label: 'Membro',
-                          onChangeds:  cadUserStore.setNome,
+                          onChangeds: cadUserStore.setNome,
                           erro: cadUserStore.erroNome,
                           enabled: cadUserStore.loading,
-                        )
-                    );
-                  }
-                  ),
+                        ));
+                  }),
                   const SizedBox(
                     width: 12,
                   ),
-                  Observer(builder:(_){
-                    return
-                      Expanded(
-                        child: TextFieldCuston(
-                          icon: Icons.phone,
-                          label: 'Telefone',
-                          onChangeds: cadUserStore.setTelefone,
-                          erro: cadUserStore.erroTelefone,
-                          enabled: cadUserStore.loading,
-                          inputFormattes: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            TelefoneInputFormatter(),
-                          ],
-                          keyboardTypes: TextInputType.number,
-                        ),
-                      );
-                  }),
-                ],
-              ),
-              Row(
-                children:[
-                  Observer(builder: (_){
+                  Observer(builder: (_) {
                     return Expanded(
-                      flex: 3,
                       child: TextFieldCuston(
-                        icon: Icons.email,
-                        label: 'E-Mail',
-                        onChangeds: cadUserStore.setEmail,
-                        erro: cadUserStore.erroEmail,
+                        icon: Icons.phone,
+                        label: 'Telefone',
+                        onChangeds: cadUserStore.setTelefone,
+                        erro: cadUserStore.erroTelefone,
                         enabled: cadUserStore.loading,
+                        inputFormattes: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          TelefoneInputFormatter(),
+                        ],
+                        keyboardTypes: TextInputType.number,
                       ),
                     );
                   }),
-                  const SizedBox(
-                    width: 12,
-                  ),
                 ],
               ),
+              Observer(builder: (_) {
+                return TextFieldCuston(
+                  icon: Icons.email,
+                  label: 'E-Mail',
+                  onChangeds: cadUserStore.setEmail,
+                  erro: cadUserStore.erroEmail,
+                  enabled: cadUserStore.loading,
+                );
+              }),
+              const SizedBox(
+                width: 12,
+              ),
               Row(
-                children:[
-                  Observer(builder: (_){
+                children: [
+                  Observer(builder: (_) {
                     return Expanded(
                       child: TextFieldCuston(
                         icon: Icons.lock,
@@ -101,7 +90,7 @@ class TelaCadUsuario extends StatelessWidget {
                   const SizedBox(
                     width: 12,
                   ),
-                  Observer(builder: (_){
+                  Observer(builder: (_) {
                     return Expanded(
                       child: TextFieldCuston(
                         icon: Icons.lock,
@@ -115,36 +104,25 @@ class TelaCadUsuario extends StatelessWidget {
                   }),
                 ],
               ),
-              Observer(builder: (_){
+              Observer(builder: (_) {
                 return SizedBox(
                   width: 300,
                   child: Row(
                     children: [
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed:  cadUserStore.verificaSalva != null ? () => cadUserStore.verificaSalva!() : null,
-                          icon: const Icon(
-                            Icons.save,
-                          ),
-                          label: cadUserStore.loading
+                      ElevatedButton.icon(
+                        onPressed: cadUserStore.verificaSalva != null
+                            ? () => cadUserStore.verificaSalva!()
+                            : null,
+                        icon: const Icon(
+                          Icons.save,
+                        ),
+                        label: cadUserStore.loading
                             ? const Text('Salvar')
-                              : const SizedBox(
+                            : const SizedBox(
                                 width: 20,
                                 height: 20,
-                                child: CircularProgressIndicator(),),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: cadUserStore.isFormValid ? (){} : null,
-                          icon: const Icon(
-                            Icons.clear,
-                          ),
-                          label: const Text('Limpar'),
-                        ),
+                                child: CircularProgressIndicator(),
+                              ),
                       ),
                     ],
                   ),

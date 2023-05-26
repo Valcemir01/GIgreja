@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_igreja/app/paginas/tela_cad_usuario.dart';
+import 'package:gerenciamento_igreja/app/paginas/usuario/tela_cad_usuario.dart';
 import 'package:gerenciamento_igreja/app/stores/page_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
@@ -29,15 +29,20 @@ class _TelaBaseState extends State<TelaBase> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Container(child: const Text('Funcionario'),),
-          Container(child: const Text('Cliente'),),
-          Container(child: const Text('Fornecedor'),),
-          TelaCadUsuario(),
-        ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: PageView(
+            controller: pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              Container(child: const Text('Funcionario'),),
+              Container(child: const Text('Cliente'),),
+              Container(child: const Text('Fornecedor'),),
+              TelaCadUsuario(),
+            ],
+          ),
+        ),
       ),
     );
   }

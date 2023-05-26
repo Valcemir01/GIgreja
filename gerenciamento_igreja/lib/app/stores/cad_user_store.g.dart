@@ -152,12 +152,12 @@ mixin _$CadUserStore on _CadUserStore, Store {
     });
   }
 
-  late final _$_SalvarAsyncAction =
-      AsyncAction('_CadUserStore._Salvar', context: context);
+  late final _$SalvarAsyncAction =
+      AsyncAction('_CadUserStore.Salvar', context: context);
 
   @override
-  Future<void> _Salvar() {
-    return _$_SalvarAsyncAction.run(() => super._Salvar());
+  Future<void> Salvar() {
+    return _$SalvarAsyncAction.run(() => super.Salvar());
   }
 
   late final _$_CadUserStoreActionController =

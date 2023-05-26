@@ -108,13 +108,13 @@ abstract class _CadUserStore with Store {
 
   //------------CADASTRA USUARIO-----------//
   @computed
-  Function? get verificaSalva => (isFormValid && loading) ? _Salvar : null;
+  Function? get verificaSalva => (isFormValid && loading) ? Salvar : null;
 
   @observable
   bool loading = true;
 
   @action
-  Future<void> _Salvar() async{
+  Future<void> Salvar() async{
     loading = false;
     final user = Usuario(
       nome: nome,

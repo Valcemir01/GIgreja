@@ -51,6 +51,7 @@ class _TextFieldCustonState extends State<TextFieldCuston> {
         decoration: InputDecoration(
           errorText: widget.erro,
           label: Text(
+            overflow: TextOverflow.ellipsis,
             widget.label,
             style: const TextStyle(color: Color(0xff2d5986)),
           ),

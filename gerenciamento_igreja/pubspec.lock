@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  awesome_notifications:
+    dependency: transitive
+    description:
+      name: awesome_notifications
+      sha256: "04c124e4a109a8182aa9842f345f0e5bde857ae6eaeca9b54f3500d50df26066"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.5-dev.2+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -93,10 +101,10 @@ packages:
     dependency: transitive
     description:
       name: build_runner_core
-      sha256: "30859c90e9ddaccc484f56303931f477b1f1ba2bab74aa32ed5d6ce15870f8cf"
+      sha256: "88a57f2ac99849362e73878334caa9f06ee25f31d2adced882b8337838c84e1e"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.8"
+    version: "7.2.9"
   built_collection:
     dependency: transitive
     description:
@@ -308,10 +316,10 @@ packages:
     dependency: transitive
     description:
       name: graphs
-      sha256: "772db3d53d23361d4ffcf5a9bb091cf3ee9b22f2be52cd107cd7a2683a89ba0e"
+      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   http:
     dependency: transitive
     description:
@@ -388,10 +396,10 @@ packages:
     dependency: transitive
     description:
       name: logging
-      sha256: "04094f2eb032cbb06c6f6e8d3607edcfcb0455e2bb6cbc010cb01171dcb64e6d"
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   matcher:
     dependency: transitive
     description:
@@ -484,18 +492,18 @@ packages:
     dependency: transitive
     description:
       name: parse_server_sdk
-      sha256: "274a03bf152b0d203b5d41c8a2643d9372b997600a6ab83e03c50d67670d7f9c"
+      sha256: c5c1415fa988525f43b637ccf55863ddb734ca63bf37cce96d5ce33a0ebe6847
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.2"
+    version: "5.1.1"
   parse_server_sdk_flutter:
     dependency: "direct main"
     description:
       name: parse_server_sdk_flutter
-      sha256: afc91be3cb63bc132b29be3dd0ec394b01c158c1db0f303276f2dd00d8c632e8
+      sha256: "84218af34b20b442e683d7ed1bc41ae067b929e33624b9cf6996a149645110eb"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "5.1.0"
   path:
     dependency: transitive
     description:
@@ -612,10 +620,10 @@ packages:
     dependency: transitive
     description:
       name: sembast
-      sha256: a784dbcf313ff38a7f57249694c64a6bcf79f704dbec127958459a7737716830
+      sha256: "74f6c57e2d230c55287372830239701286628b81ceb06a5507d7686a6d7d4b44"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.4"
+    version: "3.4.5"
   sembast_web:
     dependency: transitive
     description:

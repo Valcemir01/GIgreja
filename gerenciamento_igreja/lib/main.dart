@@ -32,28 +32,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Gerenciamento Igreja',
-      theme: ThemeData.dark().copyWith(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        cardColor: Colors.grey[300],
-        scaffoldBackgroundColor: const Color(0xff2d5986),
+    return SafeArea(
+      child: MaterialApp(
+        title: 'Gerenciamento Igreja',
+        theme: ThemeData.dark().copyWith(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          cardColor: Colors.grey[300],
+          scaffoldBackgroundColor: const Color(0xff2d5986),
 
 
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff2d5986),
-        ),
-        elevatedButtonTheme: const ElevatedButtonThemeData(
-          style: ButtonStyle( backgroundColor: MaterialStatePropertyAll<Color>(Color(0xff2d5986)),),
-        ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xff2d5986),
+          ),
+          elevatedButtonTheme: const ElevatedButtonThemeData(
+            style: ButtonStyle( backgroundColor: MaterialStatePropertyAll<Color>(Color(0xff2d5986)),),
+          ),
 
-        textTheme: const TextTheme(
-          titleMedium: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),
-          bodyMedium: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),
+          textTheme: const TextTheme(
+            titleMedium: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),
+            bodyMedium: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),
+          ),
         ),
+        home: const TelaResponsivel(),
+        //home: TelaLogin(),
       ),
-      home: const TelaResponsivel(),
-      //home: TelaLogin(),
     );
   }
 }
